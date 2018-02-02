@@ -14,8 +14,8 @@ int triangularMenor(int);
 double calcularAngulo(double,double,double);
 double calcularArea(double,double,double);
 bool serTTRectangulo(double,double,double);
-int factorial(int);
-void serieCatalana(int);
+long factorial(long);
+void serieCatalana(long);
 
 #define PI 3.14159265
 
@@ -185,23 +185,25 @@ bool serTTRectangulo(double lado1, double lado2, double lado3){
 void ejercicio3(){
 	cout<<"  **Ejercicio 3"<<endl;
 	cout<<"Ingrese el numero de elementos catalanes deseados: ";
-	int elementos;
+	long elementos;
 	cin>>elementos;
 	serieCatalana(elementos);
 }
 
-void serieCatalana(int elementos){
-	int acum=0,FFelemento1,FFelemento2,valor1,valor2;
+void serieCatalana(long elementos){
+	long acum=0,FFelemento1,FFelemento2,valor1,valor2,senuelo;
 	if(elementos==1){
 		cout<<1;
 	}else{
 		cout<<"1,";
-		FFelemento1;
-		for(int i = 1 ; i<=elementos ; i++){
+		senuelo = elementos;
+		for(int i = 2 ; i<=senuelo ; i++){
 			if(i%2 == 0){
 				FFelemento1 = i;	
 			}else{
-				FFelemento1 = i+1;	
+				FFelemento1 = i+1;
+				i++;	
+				senuelo++;
 			}
 
 			FFelemento2 = FFelemento1/2;
@@ -210,12 +212,11 @@ void serieCatalana(int elementos){
 			valor2 =  factorial(FFelemento1) / ( factorial(FFelemento2) * factorial( (FFelemento1 - FFelemento2) ) );
 			acum = valor1 - valor2;
 			cout<<acum<<",";
-			FFelemento1++;
 		}
 	}
 }
 
-int factorial(int numero){
+long factorial(long numero){
 	int acum = 1;
 	for(int i = 1; i<=numero; i++){
 		acum*=i;
