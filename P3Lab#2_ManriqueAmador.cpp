@@ -197,7 +197,7 @@ void serieCatalana(long elementos){
 	}else{
 		cout<<"1,";
 		senuelo = elementos;
-		for(int i = 2 ; i<=senuelo ; i++){
+		for(long i = 2 ; i<=senuelo ; i++){
 			if(i%2 == 0){
 				FFelemento1 = i;	
 			}else{
@@ -218,10 +218,12 @@ void serieCatalana(long elementos){
 }
 
 long factorial(long numero){
-	int acum = 1;
-	for(int i = 1; i<=numero; i++){
+	long acum = 1;
+	for(long i = 1; i<=numero; i++){
 		acum*=i;
+		cout<<acum<<"-"<<endl;
 	}
+	
 	return acum;
 }
 
