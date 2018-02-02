@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h> 
+#include <math.h>
 
 using namespace std;
 
@@ -10,6 +11,11 @@ void ejercicio2();
 void ejercicio3();
 bool serTriangular(int);
 int triangularMenor(int);
+double calcularAngulo(double,double,double);
+double calcularArea(double,double,double);
+bool serTTRectangulo(double,double,double);
+
+#define PI 3.14159265
 
 int main(){
 	char respuesta = ' ';
@@ -19,7 +25,7 @@ int main(){
 				ejercicio1();
 			break;
 			case 2:
-				//ejercicio2();
+				ejercicio2();
 			break;
 			case 3:
 				//ejercicio3();
@@ -126,7 +132,7 @@ int triangularMenor(int valor){
 }
 
 void ejercicio2(){
-	int lado1,lado2,lado3;
+	double lado1,lado2,lado3;
 	cout<<"  **Ejercicio 2"<<endl;
 	cout<<"Ingrese lado 1: ";
 	cin>>lado1;
@@ -134,19 +140,38 @@ void ejercicio2(){
 	cin>>lado2;
 	cout<<"Ingrese lado 3: ";
 	cin>>lado3;
-	if(lado1<1 || lado2<1 || lado3<1 || serTTRectangulo(lado1,lado2,lado3)==false){
-		cout<<"No es triangulo rectangulo"<<endl;
+	if(lado1<1 || lado2<1 || lado3<1){
+		cout<<"No es un triangulo"<<endl;
 	}else{
-		
+		if(serTTRectangulo(lado1,lado2,lado3))
+			cout<<"EL triangulo formado si es rectangulo"<<endl;
+		else
+			cout<<"El triangulo formado no es rectangulo"<<endl;
 
+		cout<<"Primer angulo: "<<calcularAngulo(lado1,lado2,lado3)<<endl;
+		cout<<"Segundo angulo: "<<calcularAngulo(lado2,lado1,lado3)<<endl;
+		cout<<"Tercer angulo: "<<calcularAngulo(lado3,lado1,lado2)<<endl;
+		
+		cout<<"El area es: "<<calcularArea(lado1,lado2,lado3)<<endl;
 	}
 }
 
-bool serTTRectangulo(int lado1, int lado2, int lado3){
+double calcularAngulo(double lado1,double lado2,double lado3){
+	return ( acos((-lado1*lado1 + lado2*lado2 + lado3*lado3)/(2*lado2*lado3)) )*(180.0/PI);
+}
+
+double calcularArea(double lado1,double lado2,double lado3){
+	double semiP = (lado1+lado2+lado3)/2;
+	return sqrt( ( semiP * (semiP-lado1) * (semiP-lado2) * (semiP-lado3)) );
+
+}
+
+
+bool serTTRectangulo(double lado1, double lado2, double lado3){
 	if(lado1*lado1 + lado2*lado2 == lado3*lado3)
 		return true;
 	else
-		if(lado2*lado2 + lado3*lado3 == lado2*lado2
+		if(lado2*lado2 + lado3*lado3 == lado2*lado2)
 			return true;
 		else
 			if(lado1*lado1 + lado3*lado3 == lado2*lado2)
