@@ -221,7 +221,6 @@ long factorial(long numero){
 	long acum = 1;
 	for(long i = 1; i<=numero; i++){
 		acum*=i;
-		cout<<acum<<"-"<<endl;
 	}
 	
 	return acum;
