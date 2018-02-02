@@ -213,6 +213,7 @@ void serieCatalana(long elementos){
 			acum = valor1 - valor2;
 			cout<<acum<<",";
 		}
+		cout<<endl;
 	}
 }
 
