@@ -21,6 +21,7 @@ void serieCatalana(long);
 
 int main(){
 	char respuesta = ' ';
+	cout<<"LAB2_ManriqueAmador"<<endl;
 	do{
 		switch(menu()){
 			case 1:
