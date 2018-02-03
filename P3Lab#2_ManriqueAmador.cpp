@@ -220,6 +220,7 @@ void serieCatalana(long elementos){
 
 long factorial(long numero){
 	long acum = 1;
+	int num =9;
 	for(long i = 1; i<=numero; i++){
 		acum*=i;
 	}
